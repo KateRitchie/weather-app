@@ -1,24 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-    crossorigin="anonymous"
-  />
-  <link rel="stylesheet" href="./style.css"/>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <!-- jQuery UI <link> tag -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="./style.css" />
     <title>Weather Forecast</title>
 </head>
+
 <body>
+    <header class="hero">
+        <h1 class="text-white bg-dark text-center mb-0">Weather Dashboard</h1>
+    </header>
+
+    <main>
+        <!-- Main container to allow use of default grid system in bootstrap -->
+
+        <div class="container">
+            <section class="row">
+                <div class="col-3">
+                    <h2>Search for a City:</h2>
+                    <div class="input-group mb-3" id="searchCity">
+                        <input type="text" class="form-control" placeholder="Name of city" aria-label="Name of city">
+                    </div>
+                    <div class="d-grid gap-2 col-12 mx-auto">
+                        <button type="button" class="btn btn-primary">Search</button>
+                    </div>
+                    <hr>
+                    </hr>
+                    <div id="searchHistory" class="col-3 list-group">Search History</div>
+                    <li>test</li>
+                    <li>test3</li>
+                    <li>test3</li>
+                    <li>test3</li>
+                </div>
+
+                <div class="card col-9 mt-4 border-0">
+                    <div class="card body">
+                        <h2 class="card-title d-flex align-items-center fw-bold mx-2 fs-1">
+                            <span id="currentCity">Denver</span>
+                            <span class="px-5" id="currentday">November 9, 2022</span>
+                        </h2>
+                        <p class="card-text mx-2 fs-2">
+                            Temperature:
+                            <span id="currentTemp">36F</span>
+                        </p>
+                        <p class="card-text mx-2 fs-2">
+                            Wind:
+                            <span id="currentWind">3.94 MPH</span>
+                        </p>
+                        <p class="card-text mx-2 fs-2">
+                            Humidity:
+                            <span id="currentHumid">2%</span>
+                        </p>
+                    </div>
+                </div>
+
+                <section class="col-md-9 offset-md-3">
+                    <h2 class="card-title d-flex align-items-center fw-bold mx-2">
+                        5-Day Forecast:
+                    </h2>
+                    <div class="row justify-content-between">
+                        <div class="col-sm-2 card bg-dark text-white">
+                            <p class="card-title fw-bold" id="date1">11/10/22</p>
+                            <p class="card-text mx-2">
+                                Temperature:
+                                <span id="currentTemp">36F</span>
+                            </p>
+                            <p class="card-text mx-2">
+                                Wind:
+                                <span id="currentWind">3.94 MPH</span>
+                            </p>
+                            <p class="card-text mx-2">
+                                Humidity:
+                                <span id="currentHumid">2%</span>
+                            </p>
+                            </div>
+                            <div class="col-sm-2 card bg-dark text-white">
+                                <p class="card-title fw-bold" id="date2">11/11/22</p>
+                                <p class="card-text mx-2">
+                                    Temperature:
+                                    <span id="currentTemp">36F</span>
+                                </p>
+                                <p class="card-text mx-2">
+                                    Wind:
+                                    <span id="currentWind">3.94 MPH</span>
+                                </p>
+                                <p class="card-text mx-2">
+                                    Humidity:
+                                    <span id="currentHumid">2%</span>
+                                </p>
+                            </div>
+                                <div class="col-sm-2 card bg-dark text-white">
+                                    <p class="card-title fw-bold" id="date3">11/12/22</p>
+                                    <p class="card-text mx-2">
+                                        Temperature:
+                                        <span id="currentTemp">36F</span>
+                                    </p>
+                                    <p class="card-text mx-2">
+                                        Wind:
+                                        <span id="currentWind">3.94 MPH</span>
+                                    </p>
+                                    <p class="card-text mx-2">
+                                        Humidity:
+                                        <span id="currentHumid">2%</span>
+                                    </p>
+                                </div>
+                                    <div class="col-sm-2 card bg-dark text-white">
+                                        <p class="card-title fw-bold" id="date4">11/13/22</p>
+                                        <p class="card-text mx-2">
+                                            Temperature:
+                                            <span id="currentTemp">36F</span>
+                                        </p>
+                                        <p class="card-text mx-2">
+                                            Wind:
+                                            <span id="currentWind">3.94 MPH</span>
+                                        </p>
+                                        <p class="card-text mx-2">
+                                            Humidity:
+                                            <span id="currentHumid">2%</span>
+                                        </p>
+                                    </div>
+                                        <div class="col-sm-2 card bg-dark text-white">
+                                            <p class="card-title fw-bold" id="date5">11/14/22</p>
+                                            <p class="card-text mx-2">
+                                                Temperature:
+                                                <span id="currentTemp">36F</span>
+                                            </p>
+                                            <p class="card-text mx-2">
+                                                Wind:
+                                                <span id="currentWind">3.94 MPH</span>
+                                            </p>
+                                            <p class="card-text mx-2">
+                                                Humidity:
+                                                <span id="currentHumid">2%</span>
+                                            </p>
+                                        </div>
+                                        </div>
+                                    </div>
+                </section>
+
+            </section>
+        </div>
 
 
+    </main>
 
- 
-     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+        integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+    <!-- jQuery UI <script> tag -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="./script.js"></script>
 </body>
+
 </html>
