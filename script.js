@@ -15,6 +15,8 @@ saveBtn.on("click", function (event) {
     localStorage.setItem('searchedCity', JSON.stringify(cityListArray));
     getCityweather(city);
     getSavedCities()
+    //clear value in input
+    $("#searchCity").val('');
 })
 
 //Function to get current day weather and populate current day card
@@ -73,14 +75,6 @@ function forecast(lat, lon) {
         })
 }
 
-//Create list button for saved cities to display on page
-var newBtn = function (btnName) {
-    var listItem = $("<li>")
-        .text(btnName)
-        .addClass("d-grid gap-2 col-12 mx-auto btn btn-secondary")
-        .attr("type", "submit")
-    return listItem;
-}
 
 //get searched cities from local storage and display in search history
 function getSavedCities() {
@@ -90,8 +84,15 @@ function getSavedCities() {
         cityListArray = [];
     } else {
         for (let i = 0; i < cityListArray.length; i++) {
-            var entry = newBtn(cityListArray[i]);
-            $("#searchHistory").append(entry)
+            var entry = cityListArray[i]
+            var city = $("#searchCity").val();
+            var listItem = $("<li>")
+            .text(city)
+            .addClass("d-grid gap-2 col-12 mx-auto btn btn-secondary")
+            .attr("type", "submit")
+            listItem.textContent = entry
+            $("#searchHistory").append(listItem)
+            
         }
     }
 }
