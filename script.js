@@ -1,7 +1,5 @@
-//Open Weather API Key
+//Open Weather API Key & forecast URL
 var APIKey = "4b15e9c838f839b2de2a4b338f140576";
-var testCity = "denver"
-var callTestURL1 = "http://api.openweathermap.org/data/2.5/weather?q=" + testCity + "&units=imperial" + "&appid=" + APIKey;
 var callURLfive = "https://api.openweathermap.org/data/3.0/onecall?"
 
 //Array for searched cities
@@ -45,7 +43,7 @@ function getCityweather(city) {
         })   
     }
 //Function to get forecase weather and populate forecast cards
-var forecast = function(lat, lon) {    
+function forecast (lat, lon) {    
     var foreApi = callURLfive + "lat=" + lat + "&lon=" + lon + "&exclude=current,minutely,hourly" + "&units=imperial" + "&appid=" + APIKey;
    console.log(foreApi)
     fetch(foreApi)
@@ -75,34 +73,30 @@ var forecast = function(lat, lon) {
     })
 }       
 
+//Create list button for saved cities to display on page
+var newBtn = function (btnName) {
+    var button = $("<li>")
+    .text(btnName)
+    .addClass("d-grid gap-2 col-12 mx-auto btn btn-secondary")
+    .attr("type", "submit")
+    return button;
+}
 
-
-
-
-
-//get searched cities from local storage
-
+//get searched cities from local storage and display in search history
 function getSavedCities() {    
-        var savedCities = JSON.parse(localStorage.getItem("searchedCity"))
-        console.log(savedCities)
-        return cityListArray;
+        var cityListArray = JSON.parse(localStorage.getItem("searchedCity"))
+        console.log(cityListArray)
+        if (cityListArray == null) {
+            cityListArray = [];
+        } else {
+            for (let i = 0; i < cityListArray.length; i++) {
+                 var entry = newBtn(cityListArray[i]); 
+                 $("#searchHistory").append(entry)
+        }
     }
-
+    }
 getSavedCities()
-//Searched cities button creation
-//var cityHistory = $("<button>")
 
-
-//Display searched cities
-//function renderSearchedCity() {
-  //  for (let i = 0; i < cityListArray.length; i++) {
-   // var entry = cityListArray[i];
-   // var newBtn = $("#searchHistory")
-   // newBtn.append("")
-
-   // newBtn.setAttribute("type", "button")
-        
-// }}
 
 
 
