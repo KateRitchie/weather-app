@@ -16,6 +16,7 @@ var saveBtn = $("#saveBtn");
     console.log(city)
     localStorage.setItem('searchedCity', JSON.stringify(cityListArray));   
     getCityweather(city);
+    
 })
 
 //Function to get current day weather and populate current day card
@@ -53,36 +54,55 @@ var forecast = function(lat, lon) {
 })
     .then(function (forecastData) {
         console.log(forecastData)
+        for (var i = 1; i < 6; i++) {
+            //day js to add in dates
+            $("#date1").text(dayjs().add(1, "day").format('MM-DD-YY'));
+            $("#date2").text(dayjs().add(2, "day").format('MM-DD-YY'));
+            $("#date3").text(dayjs().add(3, "day").format('MM-DD-YY'));
+            $("#date4").text(dayjs().add(4, "day").format('MM-DD-YY'));
+            $("#date5").text(dayjs().add(5, "day").format('MM-DD-YY'));
+            var iconCodes = "http://openweathermap.org/img/wn/" + forecastData.daily[i].weather[0].icon + "@2x.png";
+            $("#icon" + i).attr("src", iconCodes);
+            var foreTemp = forecastData.daily[i].temp.day;            
+            $("#temp" + i).html(foreTemp + "&#8457");
+            var foreWind = forecastData.daily[i].wind_speed;
+            $("#wind" + i).html(foreWind + " MPH");
+            var foreHumid = forecastData.daily[i].humidity;
+            $("#humid" + i).html(foreHumid + "%")
+
+        }
+
     })
 }       
 
 
-getCityweather(city);
+
 
 
 
 //get searched cities from local storage
-var savedCities = JSON.parse(localStorage.getItem("searchedCity"))
-function getSavedCities() {
-    if (savedCities.length !== null) {
-        return cityListArray;
-        } else {
-           cityListArray = [];
-        }
-        return cityListArray
-}
 
+function getSavedCities() {    
+        var savedCities = JSON.parse(localStorage.getItem("searchedCity"))
+        console.log(savedCities)
+        return cityListArray;
+    }
+
+getSavedCities()
 //Searched cities button creation
-//var cityHistory = $("<button>");
+//var cityHistory = $("<button>")
+
 
 //Display searched cities
 //function renderSearchedCity() {
-   // for (let i = 0; i < cityListArray.length; i++) {
-    //    var entry = cityListArray[i];
-    //    newBtn = entry.city
+  //  for (let i = 0; i < cityListArray.length; i++) {
+   // var entry = cityListArray[i];
+   // var newBtn = $("#searchHistory")
+   // newBtn.append("")
+
+   // newBtn.setAttribute("type", "button")
         
-   // }
-//}
+// }}
 
 
 
