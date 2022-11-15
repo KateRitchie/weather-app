@@ -21,7 +21,7 @@ saveBtn.on("click", function (event) {
 
 //Function to get current day weather and populate current day card
 function getCityweather(city) {
-    var callUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + "&appid=" + APIKey;
+    var callUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + "&appid=" + APIKey;
     fetch(callUrl)
         .then(function (reponse) {
             return reponse.json();
