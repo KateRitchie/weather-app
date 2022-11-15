@@ -2,29 +2,27 @@
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
+This weather app allows users to search the current and forecasted weather for cities in the United States.  It saves the searched cities in a list to allow users to pull in current and forecasted weather for those cities previously searched.
 
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
-
-## Table of Contents (Optional)
-
+This application uses the OpenWeather API
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+Click on the link to load the weather app: 
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+Once page loaded, enter city that you want to see the weather for in the search box:
+![Weather App Start Screen](./assets/images/Load%20Page.PNG)
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+Once city entered, page will display current and forecasted weather, and add that searched city to the search history section:
+![Weather info for searched city](./assets/images/Weather%20by%20current%20city%20search.PNG)
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+User can then select previously searched cities to look at current and forecasted weather
+1[Previously searched cities](./assets/images/Previously%20searched%20cities.PNG)
+
+Search history persists when page is reloaded
+
 
 ## Credits
 

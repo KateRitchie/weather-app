@@ -5,13 +5,13 @@ var callURLfive = "https://api.openweathermap.org/data/3.0/onecall?"
 //Array for searched cities used to be used with local storage
 var cityListArray = []
 
+
 //Submit button event listener
 var saveBtn = $("#saveBtn");
 saveBtn.on("click", function (event) {
     event.preventDefault();
     var city = $("#searchCity").val();
     cityListArray.push(city);
-    console.log(city)
     localStorage.setItem('searchedCity', JSON.stringify(cityListArray));
     getCityweather(city);
     getSavedCities()
@@ -27,11 +27,9 @@ function getCityweather(city) {
             return reponse.json();
         })
         .then(function (data) {
-            console.log(data)
             $("#currentCity").html(city)
             $("#currentday").text(dayjs().format('MMM D, YYYY'))
             var iconCodeCur = data.weather[0].icon;
-            console.log(data.weather[0].icon)
             var iconCode = "http://openweathermap.org/img/wn/" + iconCodeCur + "@2x.png";
             $("#currentIcon").attr("src", iconCode);
             $("#currentTemp").html(data.main.temp + "&#8457");
@@ -39,21 +37,17 @@ function getCityweather(city) {
             $("#currentHumid").html(data.main.humidity + "%");
             var lat = data.coord.lat
             var lon = data.coord.lon
-            console.log(lat)
-            console.log(lon)
             forecast(lat, lon)
         })
 }
 //Function to get forecase weather and populate forecast cards
 function forecast(lat, lon) {
     var foreApi = callURLfive + "lat=" + lat + "&lon=" + lon + "&exclude=current,minutely,hourly" + "&units=imperial" + "&appid=" + APIKey;
-    console.log(foreApi)
     fetch(foreApi)
         .then(function (response) {
             return response.json()
         })
         .then(function (forecastData) {
-            console.log(forecastData)
             for (var i = 1; i < 6; i++) {
                 //day js to add in dates
                 $("#date1").text(dayjs().add(1, "day").format('MM-DD-YY'));
@@ -75,24 +69,20 @@ function forecast(lat, lon) {
         })
 }
 
-
 //get searched cities from local storage and display in search history
 function getSavedCities() {
     var cityListArray = JSON.parse(localStorage.getItem("searchedCity"))
-    console.log(cityListArray)
     if (cityListArray == null) {
         cityListArray = [];
     } else {
+        $("#searchHistory").html('')
         for (let i = 0; i < cityListArray.length; i++) {
             var entry = cityListArray[i]
-            var city = $("#searchCity").val();
             var listItem = $("<li>")
-            .text(city)
-            .addClass("d-grid gap-2 col-12 mx-auto btn btn-secondary")
+            .text(entry)
+            .addClass("d-grid gap-2 mb-2 col-12 mx-auto btn btn-secondary")
             .attr("type", "submit")
-            listItem.textContent = entry
-            $("#searchHistory").append(listItem)
-            
+            $("#searchHistory").append(listItem)            
         }
     }
 }
@@ -104,7 +94,14 @@ $("#searchHistory").on("click", function (event) {
     getCityweather(city)
 })
 
-//TODO: How do I get only the most recent local storage item to add to list?
+//Persist local users local storage
+getSavedCities()
+
+
+
+
+
+
 
 
 
