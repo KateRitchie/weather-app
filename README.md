@@ -19,7 +19,7 @@ Once city entered, page will display current and forecasted weather, and add tha
 ![Weather info for searched city](./assets/images/Weather%20by%20current%20city%20search.PNG)
 
 User can then select previously searched cities to look at current and forecasted weather
-1[Previously searched cities](./assets/images/Previously%20searched%20cities.PNG)
+![Previously searched cities](./assets/images/Previously%20searched%20cities.PNG)
 
 Search history persists when page is reloaded
 
