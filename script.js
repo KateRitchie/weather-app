@@ -30,7 +30,7 @@ function getCityweather(city) {
             $("#currentCity").html(city)
             $("#currentday").text(dayjs().format('MMM D, YYYY'))
             var iconCodeCur = data.weather[0].icon;
-            var iconCode = "http://openweathermap.org/img/wn/" + iconCodeCur + "@2x.png";
+            var iconCode = "https://openweathermap.org/img/wn/" + iconCodeCur + "@2x.png";
             $("#currentIcon").attr("src", iconCode);
             $("#currentTemp").html(data.main.temp + "&#8457");
             $("#currentWind").html(data.wind.speed + " MPH");
@@ -55,7 +55,7 @@ function forecast(lat, lon) {
                 $("#date3").text(dayjs().add(3, "day").format('MM-DD-YY'));
                 $("#date4").text(dayjs().add(4, "day").format('MM-DD-YY'));
                 $("#date5").text(dayjs().add(5, "day").format('MM-DD-YY'));
-                var iconCodes = "http://openweathermap.org/img/wn/" + forecastData.daily[i].weather[0].icon + "@2x.png";
+                var iconCodes = "https://openweathermap.org/img/wn/" + forecastData.daily[i].weather[0].icon + "@2x.png";
                 $("#icon" + i).attr("src", iconCodes);
                 var foreTemp = forecastData.daily[i].temp.day;
                 $("#temp" + i).html(foreTemp + "&#8457");
