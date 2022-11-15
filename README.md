@@ -8,7 +8,7 @@ This application uses the OpenWeather API
 
 ## Installation
 
-Click on the link to load the weather app: 
+Click on the link to load the weather app: https://kateritchie.github.io/weather-app/
 
 ## Usage
 
